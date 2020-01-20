@@ -1,3 +1,0 @@
-brightmap sprite 4AFZC0 { map "Brightmaps/WEAPONS/Carbine/4AFZD.png" }
-brightmap sprite 4AFFA0 { map "Brightmaps/WEAPONS/Carbine/4AFFA.png" }
-brightmap sprite 4AFFB0 { map "Brightmaps/WEAPONS/Carbine/4AFFB.png" }
