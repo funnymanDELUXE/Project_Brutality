@@ -1,0 +1,1107 @@
+OptionMenu "OptionsMenu"
+{
+	Title "OPTIONS"
+	Submenu "Project Brutality Settings",		"BDSettings"
+	StaticText " "
+	Submenu "Customize Controls",		"CustomizeControls"
+	Submenu "Mouse options",			"MouseOptions"
+	Submenu "Joystick options",			"JoystickOptions"
+	StaticText " "
+	Submenu "Player Setup",				"PlayerMenu"
+	Submenu "Gameplay Options",			"GameplayOptions"
+	Submenu "Compatibility Options",	"CompatibilityOptions"
+	Submenu "Automap Options",			"AutomapOptions"
+	Submenu "HUD Options",				"HUDOptions"
+	Submenu "Miscellaneous Options",	"MiscOptions"
+	Submenu "Sound Options",			"SoundOptions"
+	Submenu "Display Options",			"VideoOptions"
+	Submenu "Set video mode",			"VideoModeMenu"
+	StaticText " "
+	SafeCommand "Reset to defaults",	"reset2defaults"
+	SafeCommand	"Reset to last saved",	"reset2saved"
+	Command "Go to console",			"menuconsole"
+}
+
+AddOptionMenu "OptionsMenu"
+{
+	StaticText ""
+	StaticText "Tilt++ v1.65"
+	Submenu "$OPTMNU_TILTPLUSPLUS", "TiltPlusPlusMenu"
+}
+
+OptionMenu "TiltPlusPlusMenu"
+{
+	Class "TiltPlusPlusMenu"
+	Title "$TILTPLUSPLUSMNU_TITLE"
+	Position -32
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_STRAFETILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT",				"sv_strafetilt", "YesNo"
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_INVERT",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_INVERT",		"sv_strafetiltinvert", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_SPEED",		"sv_strafetiltspeed", 0.1, 2.0, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_ANGLE",		"sv_strafetiltangle", 0.1, 1.0, 0.01, 2
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_MOVETILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT",				"sv_movetilt", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SPEED",			"sv_movetiltspeed", 0.1, 20.0, 0.1, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_ANGLE",			"sv_movetiltangle", 0.01, 0.10, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SCALAR",		"sv_movetiltscalar", 0.0, 1.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_TURNTILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT",				"sv_turntilt", "YesNo"
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_INVERT",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_INVERT",		"sv_turntiltinvert", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_SCALAR",		"sv_turntiltscalar", 0.0, 20.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_UNDERWATERTILT_TITLE", 1
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT",			"sv_underwatertilt", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SPEED",	"sv_underwatertiltspeed", 0.1, 20.0, 0.1, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_ANGLE",	"sv_underwatertiltangle", 0.01, 0.5, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SCALAR",	"sv_underwatertiltscalar", 0.0, 1.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_DEATHTILT_TITLE", 1
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_DEATHTILT",				"sv_deathtilt", "YesNo"
+}
+
+OptionValue "BrutalBlood"
+{
+	1, "Realistic"
+	2, "Brutal (Default)"
+	3, "Edgy As Fuck"
+	4, "Japanese Cartoon"
+	666, "Overdrawn at Blood Bank"
+}
+
+OptionValue "YesOrNo"
+{
+	0, "No"
+	1, "Yes"
+}
+
+OptionValue "YesOrNoFalse"
+{
+	1, "No"
+	0, "Yes"
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+OptionMenu "BDSettings"
+{
+	Title "Project Brutality Settings"
+	StaticText " "
+	
+	Submenu "Global Settings",		"GlobalSettings"
+	StaticText " "
+	//StaticText " "
+	Submenu "Gameplay Settings",		"GameplaySettings"
+	StaticText " "
+	Submenu "Weapon Settings",		"WeaponSettings"
+	StaticText " "
+	Submenu "Rendering Settings",		"RenderingSettings"
+	StaticText " "
+	
+}
+
+OptionMenu "GlobalSettings"
+{
+	Title "--------- Global Settings ---------"
+	StaticText " "
+	StaticText " "
+	Submenu "Spawn Preset Configuration",		"SpawnPresets"
+	StaticText " "
+	StaticText "Determine what type of weapons and enemies you'll encounter."
+	StaticText " "
+	Title "--------- Advanced Preferences ---------"
+	StaticText " "
+	Submenu "Advanced Monster Spawns",		"MonsterSpawns"
+	StaticText " "
+	Submenu "Advanced Weapon Spawns",		"WeaponSpawns"
+	StaticText " "
+	Submenu "Configure Monster Abilities",		"MonsterSettings"
+	StaticText " "
+
+}
+
+OptionMenu "SpawnPresets"
+{
+	Title "--------- Global Settings ---------"
+	StaticText " "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText " "
+	StaticText "Defines the playstyle, and nature of progression for each preset."
+	StaticText " "
+	Title "--------- Spawn Presets ---------"
+	StaticText " "
+	Submenu " - Randomized Progression - ",		"DefaultSpawnMenu"
+	StaticText " "
+	Submenu " - Tier 1 - ",		"Tier1SpawnMenu"
+	StaticText " "
+	Submenu " - Tier 2 - ",		"Tier2SpawnMenu"
+	StaticText " "
+	Submenu " - Tier 3 - ",		"Tier3SpawnMenu"
+	StaticText " "
+	Submenu " - Tier 4 - ",		"Tier4SpawnMenu"
+	StaticText " "
+	Submenu " - Tiered Progression - ",		"TieredProgressSpawnMenu"
+	StaticText " "
+	Submenu " - DeathWish - ",		"DeathWishSpawnMenu"
+	StaticText " "
+	Submenu " - Chaotic Random - ",		"ChaoticSpawnMenu"
+	StaticText " "
+	Submenu " - Brutal Doom - ",		"BrutalDoomSpawnMenu"
+	
+}
+
+OptionMenu "DefaultSpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Randomized Progression - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Balanced variety, with a mild Progression curve."
+	StaticText " Default recommended experience."
+}
+OptionMenu "Tier1SpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Tier 1 - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Similar to Brutal Doom."
+	StaticText "A few Zombie variants, no 'new' Weapons except Dual-Wielding."
+}
+OptionMenu "Tier2SpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Tier 2 - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Nearly the same as Tier 1."
+	StaticText "Slightly higher power Weapons and Enemies."		//This is actually easier than T1 because of the extra weapons available and pretty much no harder enemy variants.
+}
+OptionMenu "Tier3SpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Tier 3 - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Medium level of variation."
+	StaticText "About half of what Project Brutality has to offer."
+}
+OptionMenu "Tier4SpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Tier 4 - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "The 'end-game' preset."
+	StaticText "The fairest balance of all Weapons and Enemy types."
+}
+OptionMenu "TieredProgressSpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Tiered Progression - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Fight through each Tier."
+	StaticText "Each tier is 6 levels long. (Splits at, 7, 13, and 21+)"
+
+}
+OptionMenu "DeathWishSpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - DeathWish - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Beyond the last Tier."
+	StaticText "Very difficult Enemies, but better gear available."
+}
+OptionMenu "ChaoticSpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Chaotic Random - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Intensely Randomized."
+	StaticText "Equal weighting for all Monster and Enemy variants."
+}
+OptionMenu "PistolStartSpawnMenu"
+{
+	Title "--------- Spawn Presets ---------"
+	StaticText " - Pistol Starts - "
+	Option "Spawn Preset: ", "BrutalSpawnBalance","BrutalDoomSpawnBalanceChoices"
+	StaticText "Start from Scratch."
+	StaticText "Lose all weapons each level, but goodies are common. "
+}
+
+OptionMenu "WeaponSpawns"
+{
+	Option "No Revolver", "bd_NoRevolverWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Submachine Gun", "bd_NoSMGWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Autoshotgun", "bd_NoASGWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Carbine", "bd_NoCarbineWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Heavy Machine Gun", "bd_NoHMGWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Excavator Launcher", "bd_NoHeavyGLWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Super Grenade Launcher", "bd_NoSuperGLWeapon", "YesOrNo"
+	StaticText " "
+	Option "No M2 Plasma Rifle", "bd_NoM2PlasmaWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Freezer Rifle", "bd_NoFreezerWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Rail Gun", "bd_NoRailgunWeapon", "YesOrNo"
+	StaticText " "
+	Option "No BFG 11K Beam", "bd_NoBFGBeamWeapon", "YesOrNo"
+	StaticText " "
+	Option "No Blackhole Generator", "bd_NoBlackholeWeapon", "YesOrNo"
+	StaticText " "
+}
+
+OptionMenu "GameplaySettings"
+{
+	Title "---------Game Settings---------"
+	StaticText " "
+	Submenu " - Smart Scavenger - ",				"SmartScavengerMenu"
+	StaticText "Allows Health and/or Ammo containers to be opened."
+	StaticText " "
+	StaticText " "
+	
+	Option "Level Enhancement System", "bd_disablemapenhancements", "DisabledOption"
+	StaticText "Improves several maps with better textures,"
+	StaticText  "new decorations and sometimes new enemies."
+	StaticText " "
+	
+	StaticText " "
+	Option "Replace Captured Marines",				"bd_replacemarines", "OnOff"
+	StaticText "Replace captured marines with traditional Blurspheres"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disabled Helmet Animation",				"bd_NoHelmetAnimation", "OnOff"
+	StaticText "Remove animation of putting on your helmet at the start"
+	StaticText " "
+	StaticText " "
+	
+	Option "Doomguy cracks knuckles and loads rifle",		"pb_knuckleanimationinstart", "OnOff"
+	StaticText "Requires Disabled Helmet Animation to be off"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disable Marine Idle Chatter",				"bd_ShutTheFuckUp", "OnOff"
+	StaticText "No longer hear STAY ALERT MARINES every two seconds"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disable Auto-Doomguy Talk",				"nodoomguytalk", "OnOff"
+	StaticText "Disables the chance for automatic taunts to play."
+	StaticText " "
+	StaticText " "
+	
+	Option "Health Regeneration",				"cl_regen", "OnOff"
+	Slider "Health Regeneration Limit",				"cl_regenamount", 0, 100, 1
+	StaticText " "
+	StaticText " "	
+	
+}
+
+OptionMenu "SmartScavengerMenu"
+{
+	Title "--------- Smart Scavenger ---------"
+	StaticText "Allows Health and/or Ammo containers to be opened."
+	StaticText " "
+	Option "Smart Ammo Pickups: ", "pb_SmartScavenger","OnOff"
+	StaticText " "
+	Option "Smart Health Pickups: ", "pb_SmartScavengerHealth","OnOff"
+	Option "Health Pack Color: ", "pb_HealthPackColor","HealthPackColor"
+	StaticText " "
+	Option "Enable Stimkits and Stimkit Boxes: ", "pb_EnableCarryableHealth","YesOrNo"
+	StaticText "Usable health kits residing in player's inventory."
+	StaticText " "
+	Option "Disable container fade out: ", "pb_SmartScavengerNoFade","YesOrNo"
+	StaticText "Opened containers no longer disappear after use."
+	StaticText " "
+}
+
+OptionMenu "RenderingSettings"
+{
+	Title "---------Rendering Settings---------"
+	StaticText " "
+	Slider "Maximum Decal Amount", "cl_maxdecals", 0, 10000, 100
+	StaticText " "
+	
+	Slider "Max Gibs & Blood", "sv_corpsequeuesize", 64, 64000, 64
+	StaticText " "
+	
+	Submenu "Motion Blur", "MBlurOpts"
+	StaticText " "
+	
+	Option "Disable Weapon Sway",				"disable_weaponsway", "OnOff"
+	StaticText "Disables weapon swaying when quickly looking around"
+	StaticText " "
+	
+	Option "Enable Performance Mode",				"performancemode", "OnOff"
+	StaticText "This limits, disables, or replaces advanced decorative effects"
+	StaticText " "
+	
+	Option "Disable Screen Splash Effects",				"noscreensplash", "OnOff"
+	StaticText "Disables the splashing of liquids on the screen"
+	StaticText " "
+	
+	Option "Disable Screen Pain Effects",				"nopaineffect", "OnOff"
+	StaticText "Disables the screen scratches, bullet holes, and cracks"
+	StaticText " "
+	
+	Option "Disable Fade out effects when exiting a map", "pb_fadeonmapexit", "YesOrNoFalse"
+	StaticText "Disables the fade out effects when completing a map"
+	StaticText " "
+	
+	  Option "Blood Amount", "zdoombrutalblood", "BrutalBlood"
+	  StaticText "How much blood you want to see?"
+	  StaticText " "
+	  
+	  Option "Enable Blood/Gore Janitor", "zdoombrutaljanitor", "YesOrNo"
+	  StaticText "Makes blood, gore, and parts anatomy disappear after 30 seconds."
+	  StaticText " "
+	 
+	  Option "Enable Bullet Janitor", "zdoombrutaljanitorcasings", "YesOrNo"
+	  StaticText "Makes bullet casings & empty magazines disappear over time."
+	  StaticText " "
+}
+
+//Motion Blur Options by Pixel Eater
+OptionValue "MBlurBlendModes"
+{
+	0, "Normal"
+	1, "Lighten"
+}
+OptionMenu "MBlurAdvOpts"
+{
+	//Position -15
+	Title "Advanced Settings"
+	Option "Auto Stop", "mblur_autostop", OnOff
+	Slider "Stop Recovery", "mblur_recovery2", 0, 100, 5, 2
+	Slider "Stop Threshold", "mblur_threshold", 0, 100, 10, 2
+}
+
+OptionMenu "MBlurOpts"
+{
+	//Position -15
+	Title "Motion Blur"
+	Option "Enabled", "mblur", YesNo
+	Option "Blend Mode", "mblur_blendmode", "MBlurBlendModes"
+	statictext ""
+	Slider "Samples", "mblur_samples", 1, 100, 1, 0
+	Slider "Strength", "mblur_strength", 1, 500, 8, 2
+	Slider "Recovery", "mblur_recovery", 4, 100, 4, 1
+	Submenu "Advanced", "MBlurAdvOpts"
+}
+
+OptionMenu "WeaponSettings"
+{
+	Title "---------Weapon Settings---------"
+	
+	StaticText "-----------------Weapon Upgrades-----------------"
+	
+	Option "Completely Disable Weapon Upgrades",				"bd_NoUpgrades", "OnOff"
+	StaticText " "
+	
+	Option "Disable UAC349 LMG Upgrade",				"bd_NoLMG", "OnOff"
+	StaticText "Removes the LMG that upgrades the UAC41 Carbine"
+	StaticText " "
+	
+	Option "Disable Quad-Barrel Shotgun Upgrade",				"bd_NoQuadSSG", "OnOff"
+	StaticText "Removes the Quad Shotgun that upgrades the super shotgun"
+	StaticText " "
+	
+	Option "Disable Auto-Shotgun Upgrade",				"bd_NoAutoshotgunUpgrade", "OnOff"
+	StaticText "Removes the drum magazine upgrade for the automatic shotgun"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disable Triple Minigun Upgrade",				"bd_NoMinigunUpgrade", "OnOff"
+	StaticText "Removes the triple-rotary upgrade for the minigun"
+	StaticText " "
+	
+	Option "Disable Pump Shotgun Upgrade",				"bd_NoDBUpgrade", "OnOff"
+	StaticText "Removes the magazine upgrade for the pump shotgun"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disable Pulse Cannon Upgrade",				"bd_NoPulseCannonUpgrade", "OnOff"
+	StaticText "Removes the dark pulse cannon upgrade for the plasma gun"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disable DMR Upgrade",				"bd_NoRifleUpgrade", "OnOff"
+	StaticText "Removes the underbarrel grenade launcher for the DMR"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disable Unmaker Upgrade",				"bd_NoUnmakerUpgrade", "OnOff"
+	StaticText "Removes the Unmaker upgrade for the flame cannon"
+	StaticText " "
+	StaticText " "
+	
+	Option "Disable Lightning Gun Upgrade",				"bd_NoM2Upgrade", "OnOff"
+	StaticText "Removes the lightning upgrade for the m2 plasma rifle"
+	StaticText " "
+	StaticText " "
+	
+	StaticText "-----------------Weapon Progression-----------------"
+	
+	StaticText " "
+	Option "Revolver upgrades Pistol",				"bd_UpgradeRevolver", "OnOff"
+	StaticText "No longer use the Pistol once you collect a revolver"
+	StaticText " "
+	
+	Option "Carbine upgrades DMR",				"bd_UpgradeCarbine", "OnOff"
+	StaticText "No longer use the DMR once you collect a Carbine"
+	StaticText " "
+	
+	Option "Autoshotgun upgrades Pump Shotgun",				"bd_UpgradeShotgun", "OnOff"
+	StaticText "No longer use the Pump Shotgun once you collect a Autoshotgun"
+	StaticText " "
+	
+	Option "HMG upgrades Minigun",				"bd_UpgradeHMG", "OnOff"
+	StaticText "No longer use the Minigun once you collect an HMG"
+	StaticText " "
+	
+	StaticText "-----------------Weapon Misc-----------------"
+	
+	Option "Restore Dual Carbine",				"bd_RestoreCarbines", "OnOff"
+	StaticText "Dual wield the carbines instead of selecting firemodes"
+	StaticText " "
+	
+	Option "Old Dual SSG Firing System",				"pb_olddualssgfiresystem", "OnOff"
+	StaticText "Fire 2 Shells on The Right SSG Instead of one"
+	StaticText " "	
+}
+///////////////////////////////////////////////////////////////////////////////////////
+
+OptionMenu "MonsterSettings"
+{
+	Option "No Zombie Grenades", "bd_NoZmanGrenade", "YesOrNo"
+	StaticText "Zombie men will not throw grenades"
+	StaticText " "
+	
+	
+	Option "Normal Zombie Men Attacks", "bd_NoZmanAdvancedAttacks", "YesOrNo"
+	StaticText "Zombie men will use their original rifle attacks"
+	StaticText " "
+
+	Option "Grounded Imps", "bd_GroundImps", "YesOrNo"
+	StaticText "Prohibit imps from climbing on the ceiling"
+	StaticText " "
+	
+	Option "Hungry Pinky Demons", "bd_HungryPinky", "YesOrNo"
+	StaticText "Prevent pinky demon variants recovering health by eating monsters"
+	StaticText " "
+	
+	Option "Grounded Revenants", "bd_GroundRevenant", "YesOrNo"
+	StaticText "Prohibit the Revenant's use of his jetpack"
+	StaticText " "
+	
+	Option "Normal Hellknights", "bd_NoKnightCharge", "YesOrNo"
+	StaticText "Prevent the Hellknight from sprinting toward targets"
+	StaticText " "
+	
+	Option "Barons Ignore Barrels", "bd_NoBaronBarrel", "YesOrNo"
+	StaticText "Baron of Hell will not pick up and throw explosive barrels"
+	StaticText " "
+	
+	Option "Generic Archvile Heal", "bd_NoArchvileHeal", "YesOrNo"
+	StaticText "Archvile will not have the chance to area heal surrounding monsters"
+	StaticText " "
+	
+	Option "Generic Archvile Attack", "bd_NoArchvileSummon", "YesOrNo"
+	StaticText "Archvile will not summon additional monsters to fight"
+	StaticText " "
+	
+	Option "Simple Mancubus", "bd_NoMancubusFlamer", "YesOrNo"
+	StaticText "Mancubus will not use flamethrower attack when close"
+	StaticText " "
+	
+}
+
+OptionMenu "MonsterSpawns"
+{
+	StaticText "---------------Zombiemen Variants---------------"
+	StaticText " "
+	Option "No Pistol Zombiemen", "bd_NoPistolZman", "YesOrNo"
+	StaticText " "
+	
+	StaticText " "
+	Option "No Helmet Zombiemen", "bd_NoHelmetZman", "YesOrNo"
+	StaticText " "
+	
+	Option "No Zombie Scientist", "bd_NoZombieScientist", "YesOrNo"
+	StaticText " "
+	
+	Option "No Carbine Zombie", "bd_NoCarbineZombie", "YesOrNo"
+	StaticText " "
+	
+	Option "No Minigun Zombieman", "bd_NoMinigunZombieman", "YesOrNo"
+	StaticText " "
+	
+	Option "No Rifle Commando", "bd_NoRifleCommando", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Sergeant Variants---------------"
+	StaticText " "
+	Option "No Helmet Sergeant", "bd_NoHelmetSergeant", "YesOrNo"
+	StaticText " "
+	
+	Option "No Autoshotgun Sergeant", "bd_NoAutoshotgunSergeant", "YesOrNo"
+	StaticText " "
+	
+	Option "No Z-SpecOps", "bd_NoZSpecOps", "YesOrNo"
+	StaticText " "
+	
+	Option "No Quad-Shotgun Sergeant", "bd_NoQuadSergeant", "YesOrNo"
+	StaticText " "
+	
+	Option "No Riot Shield Sergeant", "bd_NoRiotShieldGuy", "YesOrNo"
+	StaticText " "
+	
+	Option "No Rocket Launcher Sergeant", "bd_NoRocketSergeant", "YesOrNo"
+	StaticText " "
+	
+	Option "No Pyro Sergeant", "bd_NoPyroSergeant", "YesOrNo"
+	StaticText " "
+	
+	Option "No Demon Tech Soldier", "bd_NoDemonTechSoldier", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Commando Variants---------------"
+	StaticText " "
+	Option "No Chaingun Major", "bd_NoChaingunMajor", "YesOrNo"
+	StaticText " "
+	
+	Option "No Plasma Zombie", "bd_NoPlasmaZombie", "YesOrNo"
+	StaticText " "
+	
+	Option "No Classic Chaingun Commando", "bd_NoClassicCommando", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Imp Variants---------------"
+	StaticText " "
+	Option "No Brown Variants", "bd_NoBrownImps", "YesOrNo"
+	StaticText " "
+	
+	Option "No Savage Variants", "bd_NoSavageImps", "YesOrNo"
+	StaticText " "
+	
+	Option "No Dark Variants", "bd_NoDarkImps", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Pinky Demon Variants---------------"
+	StaticText " "
+	Option "No Blood Demons", "bd_NoBloodDemon", "YesOrNo"
+	StaticText " "
+	
+	Option "No Mech Demons", "bd_NoMechDemon", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Spectre Variants---------------"
+	StaticText " "
+	Option "No Void Spectre", "bd_VoidSpectre", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Cacodemon Variants---------------"
+	StaticText " "
+	Option "No Inferno Caco", "bd_NoMagCaco", "YesOrNo"
+	StaticText " "
+	
+	Option "No Afrit", "bd_NoAfrit", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Pain Elemental Variants---------------"
+	StaticText " "
+	Option "No Suffering Elemental", "bd_NoSufferElemental", "YesOrNo"
+	StaticText " "
+	
+	Option "No Trite Elemental", "bd_NoTriteElemental", "YesOrNo"
+	StaticText " "
+	
+	Option "No Overlord", "bd_NoOverlord", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Lost Soul Variants---------------"
+	StaticText " "
+	Option "No Phantasm", "bd_NoPhantasm", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Revenant Variants---------------"
+	StaticText " "
+	Option "No Beam Revenant", "bd_NoBeamRevenant", "YesOrNo"
+	StaticText " "
+	
+	StaticText " "
+	Option "No Draugr Revenant", "bd_NoDraugr", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Arachnotron Variants---------------"
+	StaticText " "
+	Option "No Inferno Arachnotron", "bd_NoInfernoArachnotron", "YesOrNo"
+	StaticText " "
+
+	Option "No Arachnophyte", "bd_NoArachnophyte", "YesOrNo"
+	StaticText " "
+	
+	StaticText " "
+	Option "No Elite Arachnotron", "bd_NoArachnotron2", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Hell Knight Variants---------------"
+	StaticText " "
+	Option "No Cyber Hell Knight", "bd_NoCyberKnight", "YesOrNo"
+	StaticText " "
+	
+	Option "No Cyber Hell Paladin", "bd_NoCyberPaladin", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Baron of Hell Variants---------------"
+	StaticText " "
+	Option "No Cyber Baron", "bd_NoCyberBaron", "YesOrNo"
+	StaticText " "
+	
+	Option "No Belphegor", "bd_NoBelphegor", "YesOrNo"
+	StaticText " "
+	
+	Option "No Infernus", "bd_NoInfernus", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Mancubus Variants---------------"
+	StaticText " "
+	Option "No Daedabus", "bd_NoDaedabus", "YesOrNo"
+	StaticText " "
+	
+	StaticText " "
+	Option "No Volcabus", "bd_NoVolcabus", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Archvile Variants---------------"
+	StaticText " "
+	Option "No Ice Vile", "bd_NoIceVile", "YesOrNo"
+	StaticText " "
+	Option "No Fleshwizard", "bd_NoFleshwizard", "YesOrNo"
+	StaticText " "
+	Option "No Hellion", "bd_NoHellion", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Spider Mastermind Variants---------------"
+	StaticText " "
+	Option "No Demolisher", "bd_NoDemolisher", "YesOrNo"
+	StaticText " "
+	
+	StaticText " "
+	Option "No Juggernaut", "bd_NoJuggernaut", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Cyber Demon Variants---------------"
+	StaticText " "
+	Option "No Annihilator", "bd_NoAnnihilator", "YesOrNo"
+	StaticText " "
+	
+	StaticText "---------------Bonus---------------"
+	StaticText " "
+	Option "Enable Evil Marines", "bd_EnableEvilMarines", "YesOrNo"
+	StaticText " "
+}
+
+OptionMenu "SpawnSettings"
+{
+	Title "Project Brutality Settings"
+	StaticText "---Weapon Spawns---"
+	StaticText "Melee"
+	StaticText "Small Caliber Firearms"
+	StaticText "Shotguns"
+	StaticText "Large Caliber Firearms"
+	StaticText "Launchers"
+	StaticText "Plasma Weapons"
+	StaticText "Special Energy Weapons"
+	StaticText "Big Guns"
+	StaticText "Demonic Weapons"
+	StaticText "Secret Weapons"
+}
+
+OptionValue "BrutalDoomSpawnBalanceChoices"
+{
+666, "Randomized Progression"
+667, "Tier 1"
+668, "Tier 2"
+669, "Tier 3"
+670, "Tier 4"
+671, "Tiered Progression"
+672, "DeathWish" //YE
+663, "Chaotic Random"
+//674, "Pistol Starts"
+675, "Brutal Doom"
+}
+
+OptionValue "HealthPackColor"
+{
+0, "Green"
+1, "White"
+}
+
+ListMenu "MainMenu"
+{
+	IfGame(Doom, Chex)
+	{
+		StaticPatch 80, -10, "M_DOOMPB"
+		Position 85, 66
+	}
+	IfGame(Doom, Strife, Chex)
+	{
+		TextItem "New Game", "n", "PlayerclassMenu"
+		Selector "M_SKULL1", -30, -8
+		ifOption(SwapMenu)
+		{
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "BD Options", "b", "BDSettings"
+		}
+		else
+		{
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "Project Brutality", "b", "BDSettings"
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+		}
+		ifOption(ReadThis)
+		{
+			TextItem "Read This!","r", "ReadThisMenu"
+		}
+		TextItem "Quit Game", "q", "QuitMenu"
+	}
+	
+	IfGame(Heretic, Hexen)
+	{
+		TextItem "$MNU_NEWGAME", "n", "PlayerclassMenu"
+		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"
+		TextItem "Project Brutality Settings", "b", "BDSettings"
+		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
+		TextItem "$MNU_INFO", "i", "ReadThisMenu"
+		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
+	}
+}
+
+ListMenu "PlayerclassMenu"
+{
+	StaticTextCentered 160, 15, "Select Game Mode"
+	Position 71, 50
+	Selector "M_SKULL1", -30, -8
+}
+
+ListMenu "SkillMenu"
+{
+	StaticTextCentered 160, 15, "Select Difficulty"
+	Position 21, 50
+	Selector "M_SKULL1", -30, -8
+}
+
+OptionValue "DisabledOption"
+{
+	0, "Enabled"
+	1, "Disabled"
+}
+
+
+OptionValue "maxgibs"
+{
+	1, "0"
+	64, "64"
+	100, "100"
+	500, "500"
+	1000, "1000"
+	2000, "2000"
+	5000, "5000"
+	10000, "10000"
+	25000, "25000"
+	50000, "50000"
+}
+
+
+
+
+
+//Z Movement
+AddOptionMenu "OptionsMenu"
+{
+	StaticText ""
+	Submenu "ZMove Options", "ZMoveOptions"
+}
+
+OptionMenu "ZMoveOptions"
+{
+	Class "ZMoveMenu"
+	Title "ZMove Options"
+	Position -32
+	
+	StaticText	""
+	StaticText	"Speed & Acceleration", 1
+	ZMoveOption	"Movement Type",						"Pick your Movement Type",																"zm_movetype",				"MoveType"
+	ZMoveSlider "Ground Friction Strength", 			"Set Ground Friction Strength",															"zm_friction",				0.5,	10.0,	0.1
+	ZMoveSlider	"Maximum Ground Speed",					"Maximum Ground Speed (u/s)",															"zm_maxgroundspeed",		10,		15,		0.1
+	ZMoveSlider "Maximum Hopping Speed", 				"Maximum Hopping Speed (u/s)",															"zm_maxhopspeed",			24,		36,		1,		0
+	ZMoveSlider	"Walk Speed",							"How fast you move when walking (% of regular speed)",									"zm_walkspeed",				0.5,	1.0,	0.1
+	ZMoveSlider	"Crouch Speed",							"How fast you move when crouching (% of regular speed, never faster than Walk Speed)",	"zm_crouchspeed",			0.1,	1.0,	0.1
+	ZMoveSlider "StrafeRunning Speed Bonus",			"Ground Straferunning speed boost",														"zm_strafemodifier",		1.0,	1.2,	0.05,	2
+	ZMoveOption	"Drop Prevention",						"Helps not fall ledges when you are walking/not pressing directional inputs",			"zm_dropprevention",		"OnOff"
+	StaticText	""
+	StaticText	"Dusk Movement", Orange
+	ZMoveSlider "Strafejumping Acceleration", 			"How fast you gain speed when you strafejump",											"dsk_acceleration",			1.0,	2.5,	0.1
+	StaticText	""
+	StaticText	"Painkiller Movement", Orange
+	ZMoveSlider "BHop Acceleration", 					"How fast you gain speed when bunnyhopping",											"pk_acceleration",			1.0,	2.0,	0.05,	2
+	StaticText	""
+	StaticText	"Quake Movement", Orange
+	ZMoveOption	"Strafe Jumping Type",					"Pick your Strafe Jumping Type",														"q_strafetype",				"StrafeType"
+	ZMoveSlider "Q3 Acceleration", 						"How fast you gain speed when strafejumping Q3 style",									"q_3airaccel",				0.5,	1.0,	0.05,	2
+	ZMoveSlider "Q1 Acceleration", 						"How fast you gain speed when strafejumping Q1 style",									"q_1airaccel",				1.0,	2.0,	0.05,	2
+	StaticText	""
+	
+	StaticText	"Jumping", 1
+	ZMoveSlider "Jump Height", 							"Player Jump Height",																	"zm_jumpheight",			5,		8,		0.5
+	ZMoveSlider "Gravity", 								"Set Player Gravity",																	"zm_setgravity",			0.1,	1.5,	0.1,	2
+	ZMoveOption "Auto Jump", 							"Enable auto jump",																		"zm_autojump",				"OnOff"
+	StaticText	""
+	StaticText	"Build Engine Movement", Orange
+	ZMoveSlider "Jump Animation ViewHeight", 			"How much your viewpoint lowers when executing a jump",									"be_jumpanim",				4.0,	8.0,	0.5
+	StaticText	""
+	StaticText	"Painkiller Movement", Orange
+	ZMoveSlider "BHop Jump Height", 					"Bunny Hop Jump Height (% of regular jump height)",										"pk_bhopjumpheight",		0.5,	1,		0.1,	2
+	StaticText	""
+	StaticText	"Double Jump", Orange
+	ZMoveOption "Double Jump Type", 					"Enable and choose Double Jumping style",												"zm_doublejump",			"DoubleJump"
+	ZMoveSlider "Double Jump Height", 					"Double Jump Height (% of regular jump height)",										"zm_doublejumpheight",		0.5,	1.5,	0.1
+	ZMoveOption "Wall Jump Renewal", 					"Grants double jump everytime you execute a consecutive wall jump",						"zm_wjdoublejumprenew",		"OnOff"
+	StaticText	""
+	StaticText	"Ramp Jumps", Orange
+	ZMoveOption "Ramp Jumps Enabled", 					"When on you will be able to perform ramp jumps",										"zm_rampjump",				"OnOff"
+	ZMoveSlider "Ramp Jump Multiplier", 				"How beneficial a ramp jump is to the overall jump height",								"zm_rjumpmulti",			0.5,	1.2,	0.1,	2
+	StaticText	""
+	StaticText	"Elevator Jumps", Orange
+	ZMoveOption "Elevator Jumps Enabled", 				"When on you can perform UT style elevator jumps",										"zm_elevatorjump",			"OnOff"
+	ZMoveSlider "Elevator Jumps Bonus Multiplier", 		"Multiplier of the elevator jump bonus",												"zm_ejumpmultiplier",		1.0,	2.0,	0.05,	2
+	StaticText	""
+	StaticText	"Jump landing height animation", Orange
+	ZMoveOption	"Jump Landing Enabled",					"Enable Build style jump landing view height animation",								"zm_landing",				"OnOff"
+	ZMoveSlider	"Landing Velocity Sensitivity",			"How sensitive the height change is to the landing velocity",							"zm_landingsens",			4.0,	8.0,	0.1
+	ZMoveSlider	"Animation Speed",						"How quickly your viewheight returns to normal",										"zm_landingspeed",			0.25,	1.0,	0.05,	2
+	ZMoveSlider	"Minimum Height",						"The minimum viewheight you reach during a landing (% of regular view height)",			"zm_minlanding",			0.5,	0.75,	0.05,	2
+	StaticText	""
+	
+	StaticText	"Dashing", 1
+	Control		"Dash - Wall Jump Bind",				"Dash"
+	ZMoveOption	"Dash Enabled",							"Enable Dashing",																		"zm_dash",					"OnOff"
+	ZMoveOption	"Double Tap Dash",						"Enable Dashing double tapping trigger",												"zm_doubletap",				"OnOff"
+	ZMoveSlider "Max Double Tap Time", 					"Maximum double tapping time",															"zm_maxtaptime",			2,		20,		1,		0
+	ZMoveSlider "Dash Boost", 							"Set how fast you dash",																"zm_dashboost",				1.2,	1.5,	0.05,	2
+	ZMoveSlider "Dash Jump Height", 					"Set how high you jump when dashing (% of regular jump height)",						"zm_dashheight",			0.5,	1.0,	0.05,	2
+	StaticText	""
+	StaticText	"Wall Jumping", Orange
+	ZMoveOption	"Wall Jump Enabled",					"Enable Wall Jumping",																	"zm_wjump",					"OnOff"
+	ZMoveSlider "Wall Jump Boost", 						"Set how fast you walljump",															"zm_wjumpboost",			1.5,	2.0,	0.05,	2
+	ZMoveSlider "Consecutive Jumps Bonus", 				"Speed bonus per each consecutive wall jump",											"zm_multipledashes",		0.0,	2.0,	0.05,	2
+	ZMoveSlider "Wall Jump Height", 					"Set how high you jump when wall jumping (% of regular jump height)",					"zm_wjumpheight",			0.5,	1.0,	0.05,	2
+	StaticText	""
+	StaticText	"Air Dashing", Orange
+	ZMoveOption	"Air Dash Enabled",						"Enable Air Dashing",																	"zm_airdash",				"OnOff"
+	ZMoveSlider	"Air Dash Boost",						"How strong air dashing boost is",														"zm_adashboost",			5,		15,		1,		0
+	ZMoveSlider	"Air Dash Friction",					"How quickly you will loose speed after an air dash",									"zm_adashfriction",			0.5,	1.5,	0.05,	2
+	StaticText	""
+	
+	StaticText	"Wall Sliding", 1
+	Control		"Wall Slide Bind",						"WallSlide"
+	ZMoveOption	"Wall Slide Enabled",					"Enable Wall Sliding",																	"zm_wslide",				"OnOff"
+	ZMoveSlider "Wall Sliding Gravity", 				"Lower the value slower you will fall to the ground when wall sliding",					"zm_wslidevelz",			0.5,	1.0,	0.05,	2
+	StaticText	""
+	
+	StaticText	"CrouchSlide", 1
+	ZMoveOption "Crouch Slide", 						"Enable crouch sliding",																"zm_crouchslide",			"OnOff"
+	ZMoveOption "Crouch Slide Type", 					"Select crouch slide type",																"zm_cslidetype",			"SlideType"
+	StaticText	""
+	StaticText	"Regular Crouch Slide", Orange
+	ZMoveSlider "Slide Speed Boost", 					"Set the initial crouch slide speed boost",												"zm_cslidestrength",		1.5,	2.5,	0.05,	2
+	ZMoveSlider "Slide duration", 						"Maximum slide duration in tics",														"zm_cslideduration",		10,		15,		1,		0
+	StaticText	""
+	StaticText	"Quake Crouch Slide", Orange
+	ZMoveSlider "Slide Acceleration", 					"How strong the crouch slide acceleration is",											"zm_qslideaccel",			5.0,	7.0,	0.05,	2
+	ZMoveSlider "Slide duration", 						"Multiplier of the crouch slide duration",												"zm_qslideduration",		6,		10,		1,		0
+	StaticText	""
+	
+	StaticText	"Ledge Grabbing - Do NOT enable this if playing Project Brutality 3.0", 1
+	ZMoveOption "Ledge Grabbing Enabled", 				"Turn on and off ledge grabbing",														"zm_ledgegrab",				"OnOff"
+	StaticText	""
+	
+	StaticText	"Grappling Hook", 1
+	Control		"Grappling Hook Bind",					"GrapplingHook"
+	ZMoveOption "Grappling Hook Enabled", 				"Enable and choose grappling hook style",												"zm_hook",					"GHook"
+	ZMoveSlider "Hook speed boost", 					"Intensity of the hook's speed boost",													"zm_hookboost",				1.0,	2.0,	0.1
+	StaticText	""
+	
+	StaticText	"Bobbing", 1
+	ZMoveSlider	"Walk/Run View Bobbing",				"Adjust view bobbing's intensity when moving",											"movebob",					0.0,	1.0,	0.1
+	ZMoveSlider	"Still View Bobbing",					"Adjust view bobbing's intensity when not moving",										"stillbob",					0.0,	1.0,	0.1
+	ZMoveSlider	"Walk/Run Weapon Bobbing",				"Adjust weapon bobbing's intensity when moving",										"wbobspeed",				0.0,	2.0,	0.1
+	ZMoveOption	"Still Weapon Bobbing",					"Turn on/off the weapon bobbing when standing still",									"zm_stillbob",				"OnOff"
+	ZMoveSlider	"Sprite speed to full bob",				"How fast weapon sprites transition to their maximum bobbing range",					"zm_fullbobspeed",			1,		15,		1,		0
+	StaticText 	""
+	StaticText	"Weapon Sway", Orange
+	ZMoveOption "Yaw Weapon Sway", 						"Allow weapons to sway according to your mouse yaw",									"zm_yawsway",				"OnOff"
+	ZMoveSlider "Yaw Sway Speed", 						"How fast weapons sway",																"zm_yawswayspeed",			0,		4,		0.5
+	ZMoveSlider "Yaw Sway Range", 						"Maximum Distance weapons can sway",													"zm_yawswayrange",			0,		8,		0.1
+	ZMoveSlider "Yaw Sway Friction", 					"How fast sprites will tend to realign to the center",									"zm_yawswayfriction",		5,		14,		0.5
+	ZMoveOption "Yaw Sway Direction", 					"Set wherever weapons sway in the direction you turn or the opposite",					"zm_yawswaydirection",		"SwayDirection"
+	StaticText 	""
+	StaticText	"Vertical Offset", Orange
+	ZMoveSlider "Offset Speed", 						"How fast weapons raise and fall depending on your vertical velocity",					"zm_offsetspeed",			50,		100,	1,		0
+	ZMoveSlider "Offset Range", 						"Maximum Height weapons can fall",														"zm_offsetmaxrange",		10,		50,		1,		0
+	ZMoveOption "Offset Direction", 					"Set Wherever the sprites are offset according to your vertical direction",				"zm_offsetdirection",		"OffsetDirection"
+	StaticText 	""
+	
+	StaticText	"Others", 1
+	ZMoveOption "Speedometer", 							"Enable SpeedOMeter",																	"zm_speedometer",			"Speedometer"
+	Control		"Reset to default values",				"zmove_reset"
+}
+
+OptionValue "MoveType"
+{
+	0, "Doom"
+	1, "Build Engine"
+	2, "Dusk"
+	3, "Painkiller"
+	4, "Quake"
+	5, "Unreal Tournament"
+}
+
+OptionValue "StrafeType"
+{
+	0, "Quake 3"
+	1, "Quake 1"
+	2, "CPMA"
+}
+
+OptionValue "DoubleJump"
+{
+	0, "Off"
+	1, "Unreal Tournament"
+	2, "Doom 4"
+}
+
+OptionValue "SlideType"
+{
+	0, "Regular"
+	1, "Quake"
+}
+
+OptionValue "BobType"
+{
+	0, "Doom"
+	1, "Build Engine"
+	2, "Dusk"
+	3, "Painkiller"
+	4, "Unreal Tournament"
+}
+
+OptionValue "GHook"
+{
+	0, "Off"
+	1, "Pull Only"
+	2, "Pull & Pendulum"
+}
+
+OptionValue "SwayDirection"
+{
+	0, "Opposite Direction"
+	1, "Same Direction"
+}
+
+OptionValue "OffsetDirection"
+{
+	0, "Opposite Direction"
+	1, "Same Direction"
+}
+
+OptionValue "Speedometer"
+{
+	0, "Off"
+	1, "Doom Units"
+	2, "Quake Units"
+}
+
+
+//NashGore's ZScript Gore System
+AddOptionMenu "OptionsMenu"
+{
+	StaticText ""
+	StaticText "Nash's Gore Mod: Vengeance Edition v1.0"
+	Submenu "$OPTMNU_NASHGORE", "NashGoreMenu"
+}
+
+OptionMenu "NashGoreMenu"
+{
+	Class "NashGoreMenu"
+	Title "$NASHGOREMNU_TITLE"
+	Position -32
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_BLOOD_TITLE", 1
+	NashGoreOption "$NASHGOREMNU_BLOOD_TYPE",		"$NASHGOREMNU_HELPTEXT_BLOOD_TYPE",			"nashgore_bloodtype",	"NashGoreBloodTypes"
+	NashGoreSlider "$NASHGOREMNU_BLOOD_AMOUNT",		"$NASHGOREMNU_HELPTEXT_BLOOD_AMOUNT",		"nashgore_bloodamount",	0, 255, 1, 0
+	NashGoreOption "$NASHGOREMNU_BLOOD_SPRITES",	"$NASHGOREMNU_HELPTEXT_BLOOD_SPRITES",		"nashgore_spriteblood",	"NashGoreBloodSpriteValues"
+	NashGoreOption "$NASHGOREMNU_BLOOD_SPURTS",		"$NASHGOREMNU_HELPTEXT_BLOOD_SPURTS",		"nashgore_bloodspurt",	"OnOff"
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_GIB_TITLE", 1
+	NashGoreOption "$NASHGOREMNU_GIB_TYPE",			"$NASHGOREMNU_HELPTEXT_GIB_TYPE",			"nashgore_gibtype",		"NashGoreGibTypes"
+	NashGoreSlider "$NASHGOREMNU_GIB_AMOUNT",		"$NASHGOREMNU_HELPTEXT_GIB_AMOUNT",			"nashgore_gibamount",	0, 255, 1, 0
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_MISC_TITLE", 1
+	SafeCommand "$NASHGOREMNU_MISC_CLEARGORENOW",			"netevent EV_ClearGore"
+	NashGoreSlider "$NASHGOREMNU_MISC_MAXGORE",				"$NASHGOREMNU_HELPTEXT_MISC_MAXGORE",		"nashgore_maxgore",		0, 2000, 1, 0
+	NashGoreOption "$NASHGOREMNU_MISC_CORPSEBLOOD",			"$NASHGOREMNU_HELPTEXT_MISC_CORPSEBLOOD",	"nashgore_corpseblood",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_FOOTPRINTS",			"$NASHGOREMNU_HELPTEXT_MISC_FOOTPRINTS",	"nashgore_footprints",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_DEATHFLIP",			"$NASHGOREMNU_HELPTEXT_MISC_DEATHFLIP",		"nashgore_deathflip",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_SQUISH",				"$NASHGOREMNU_HELPTEXT_MISC_SQUISH",		"nashgore_squish",		"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_ICEDEATH",			"$NASHGOREMNU_HELPTEXT_MISC_ICEDEATH",		"nashgore_icedeath",	"OnOff"
+	NashGoreOption "$NASHGOREMNU_MISC_SPLAT",				"$NASHGOREMNU_HELPTEXT_MISC_SPLAT",			"nashgore_splat",		"OnOff"
+
+	StaticText ""
+
+	StaticText "$NASHGOREMNU_CONTROLS_TITLE", 1
+	NashGoreControl "$NASHGOREMNU_CONTROLS_CLEARGORE", "$NASHGOREMNU_HELPTEXT_CONTROLS_CLEARGORE", "netevent EV_ClearGore"
+}
+
+OptionValue "NashGoreBloodTypes"
+{
+	0, "$NASHGOREMNU_DEFAULT"
+	1, "$NASHGOREMNU_BLOOD_TYPE_CLASSIC"
+	2, "$NASHGOREMNU_VANILLA"
+}
+
+OptionValue "NashGoreBloodSpriteValues"
+{
+	0, "$NASHGOREMNU_BLOOD_SPRITE_DECALS"
+	1, "$NASHGOREMNU_BLOOD_SPRITE_SPRITES"
+}
+
+OptionValue "NashGoreGibTypes"
+{
+	0, "$NASHGOREMNU_DEFAULT"
+	1, "$NASHGOREMNU_GIB_TYPE_NOSTICKYGIBS"
+	2, "$NASHGOREMNU_VANILLA"
+}
+
+
