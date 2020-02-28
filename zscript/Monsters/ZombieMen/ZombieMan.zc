@@ -44,9 +44,9 @@ Class PB_ZombieMan : PB_Monster
 		damagefactor "Saw", 0.5;
 		damagefactor "Cut", 0.75;
 		damagefactor "Tear", 0.25;
-		DropItem "DropedRifle";
+		DropItem "Rifle";
 		DropItem "DropedGrenade", 7;
-		DropItem "DropedPistol";
+		DropItem "BDPistol";
 		Obituary "%o has been gunned down by a Zombie Soldier.";
 		+FLOORCLIP;
 		+SLIDESONWALLS;
