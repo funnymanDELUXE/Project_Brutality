@@ -155,10 +155,11 @@ ACTOR DropedMinigun
 
 ACTOR DropedSSG
 {
-    Radius 1
-    Height 1
+	SpawnID 9330
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -167,18 +168,31 @@ ACTOR DropedSSG
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
     Spawn:
-		SGN2 A 4 A_SetRoll(roll+30)
-		Loop
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		SGN2 A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("SSG",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("DualSSG",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("HasTwoSSG",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("Traditional_SSG",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
     }
 }
 
@@ -226,10 +240,11 @@ ACTOR DropedBrutalAxe
 
 ACTOR DropedASG
 {
-    Radius 1
-    Height 1
+	SpawnID 9340
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -238,18 +253,37 @@ ACTOR DropedASG
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
     Spawn:
-		AUSC A 4 A_SetRoll(roll+30)
-		Loop
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponASG",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		AUSC A 1 A_SetRoll(0)
-        TNT1 A 0 A_SpawnItemEx("Autoshotgun",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponASG",0)
+		TNT1 A 1 
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("AutoShotgun",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("DualAutoShotguns",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("HasTwoASG",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("Traditional_Shotgun",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("Shot_Gun",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
     }
 }
 
@@ -302,10 +336,10 @@ ACTOR DropedHMG
 
 ACTOR DropedSMG
 {
-    Radius 1
-    Height 1
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -314,27 +348,44 @@ ACTOR DropedSMG
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
-    Spawn:
-		ATFL A 4 A_SetRoll(roll+30)
-		Loop
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponSMG",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		ATFL A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponSMG",0)
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("CompactSMG",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("NewClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	ReplaceToggle:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("NewClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
     }
 }
 
 ACTOR DropedRevolver
 {
-    Radius 1
-    Height 1
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -343,27 +394,46 @@ ACTOR DropedRevolver
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
-    Spawn:
-		RVIC A 4 A_SetRoll(roll+30)
-		Loop
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponRevolver",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		RVIC A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponRevolver",0)
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("Revolver",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("DualMagnums",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("HasTwoMagnums",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("NewShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	ReplaceToggle:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("NewShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
     }
 }
 
 ACTOR DropedCarbine
 {
-    Radius 1
-    Height 1
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -372,18 +442,37 @@ ACTOR DropedCarbine
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
-    Spawn:
-		4AFL A 4 A_SetRoll(roll+30)
-		Loop
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponCarbine",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		4AFL A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleWeaponCarbine",0)
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("Carbine",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("DualCarbines",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("HasTwoCarbines",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("NewClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	ReplaceToggle:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("NewClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
     }
 }
 
@@ -439,10 +528,11 @@ ACTOR DropedM2Plasma
 
 ACTOR DropedPlasma
 {
-    Radius 1
-    Height 1
+	SpawnID 9600
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -451,27 +541,40 @@ ACTOR DropedPlasma
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
-    Spawn:
-		PLAS A 4 A_SetRoll(roll+30)
-		Loop
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		PLAS A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("Plasma_Gun",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("DualPlasmaRifles",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("HasTwoPlasmaRifles",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceVanilla:
+	ReplaceTraditional:
+		TNT1 A 0 A_SpawnItemEx("Traditional_PlasmaRifle",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
     }
 }
 
 ACTOR DropedPistol Replaces Pistol
 {
-    Radius 1
-    Height 1
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -480,27 +583,39 @@ ACTOR DropedPistol Replaces Pistol
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
-    Spawn:
-		DEGT A 4 A_SetRoll(roll+30)
-		Loop
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		DEGT A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("BDPistol",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("HasTwoPistols",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 1 A_SpawnItemEx("NewClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
     }
 }
 
 ACTOR DropedRifle
 {
-    Radius 1
-    Height 1
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -509,27 +624,38 @@ ACTOR DropedRifle
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
-    Spawn:
-		RIFL A 4 A_SetRoll(roll+30)
-		Loop
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		RIFL A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("Rifle",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("DualRifles",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        TNT1 A 0 A_SpawnItemEx("HasTwoRifles",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
 		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 1 A_SpawnItemEx("NewClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
     }
 }
 
 ACTOR DropedShotgun
 {
-    Radius 1
-    Height 1
+    Radius 8
+    Height 10
     Scale 1.0
-	Speed 10
+	Speed 1
 	Mass 1
     gravity 1
 	Decal none
@@ -538,17 +664,27 @@ ACTOR DropedShotgun
     +NOBLOCKMAP
     +NOTELEPORT
     +MISSILE
-	+ROLLSPRITE
     States
     {
     Spawn:
-		SHTC A 4 A_SetRoll(roll+30)
-		Loop
+		TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
 		
 	Death:
-		SHTC A 1 A_SetRoll(0)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 
+	    TNT1 AA 1
+		TNT1 AA 1
         TNT1 A 0 A_SpawnItemEx("Shot_gun",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
         Stop
+		
+	ReplaceTraditional:
+	ReplaceVanilla:
+		TNT1 A 1 A_SpawnItemEx("Traditional_Shotgun",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
 		
     }
 }
@@ -627,34 +763,5 @@ ACTOR DropedMP40
 	ReplaceTraditional:
 		TNT1 A 1 A_SpawnItemEx("NewClip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
 		Stop
-    }
-}
-
-ACTOR TossedHellRifle
-{
-    Radius 1
-    Height 1
-    Scale 1.0
-	Speed 10
-	Mass 1
-    gravity 1
-	Decal none
-    +MOVEWITHSECTOR
-    +DONTGIB
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +MISSILE
-	+ROLLSPRITE
-    States
-    {
-    Spawn:
-		HRPU A 4 A_SetRoll(roll+30)
-		Loop
-		
-	Death:
-		HRPU A 1 A_SetRoll(0)
-        TNT1 A 0 A_SpawnItemEx("Hell_Rifle",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
-        Stop
-		
     }
 }
