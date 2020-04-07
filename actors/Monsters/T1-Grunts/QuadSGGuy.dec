@@ -1,24 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@funnymanDELUXE 
-pa1nki113r
-/
-Project_Brutality
-78
-27186
- Code Issues 82 Pull requests 2 Actions Projects 0 Wiki Security Insights
-Project_Brutality/actors/Monsters/T1-Grunts/QuadSGGuy.dec
-@pa1nki113r pa1nki113r Massive code cleanup across dozens of files, reduced over 90% of warn…
-83a1878 yesterday
-@pa1nki113r@mryayayify
-1410 lines (1297 sloc)  54.6 KB
-  
 Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
 {
   Health 46
