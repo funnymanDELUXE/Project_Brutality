@@ -265,12 +265,27 @@ OptionMenu "GameplaySettings"
 	StaticText " "
 	StaticText " "
 	
+
+  StaticText "Pump Shot Gun Settings"
+	StaticText " "
+	Option "Alternate Ammo Swap Animation",	"bd_SGAltAmmoSwap", "OnOff"
+	StaticText "Ammo Swap is slower and more realistic"
+	Option "Alternate Pump Animation",	"bd_SGPumpFromHip", "OnOff"
+	StaticText "Pump shotgun from hip when box magazine upgrade is in inventory"
+	Option "Set aiming mode to hold","pb_toggle_aim_hold", "OnOff" //Looks like we are using this newer line.
+	
+  StaticText " "
 	
 	Option "Hazards prevent advanced movement","pb_hazardmovement", "OnOff"
 	StaticText "Toggles if hazard floors inhabit advanced movement such as jumping and dashing"
 	StaticText "Leave this off for maps where jumping is not intended!!!"
 	StaticText " "
 	
+	StaticText " "
+	Option "Exploding enemies deal actual damage", "pb_enemyexplosiondamage", "OnOff"
+	StaticText "Enemies that can explode on death will deal actual damage if turned on" 
+	StaticText "(except Pain Elementals as they will always deal damage)"
+	StaticText " "
 	
 	StaticText " "
 	Submenu " - Smart Scavenger - ",				"SmartScavengerMenu"
@@ -314,6 +329,10 @@ OptionMenu "GameplaySettings"
 	StaticText " "
 	StaticText " "	
 	
+	Slider "Doomguy Fatalities Speed",				"cl_fatalityspeed", 1.0, 3.0, 0.05, 2
+	StaticText "Increases the speed of Doomguy's fatalities (higher is faster)."
+	StaticText " "
+	StaticText " "	
 }
 
 OptionMenu "SmartScavengerMenu"
